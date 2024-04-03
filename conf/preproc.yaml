@@ -1,0 +1,99 @@
+# Copyright 2024 Zsolt Bedőházi, András M. Biricz
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+#########################################################################
+#########################################################################
+# HIPT STAGE3 ON 224x224 PATCHES EMB
+hipt_stage3_on_embeddings_bag:
+  uni_224_224_patches:
+    cv_split_dir: /home/ngsci/project/tuberculosis_detection/cv_splits/
+    cv_split_dir_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_10fold/
+    cv_split_dir_without_localtest_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_without_localtest_10fold/
+    data_root_dir: /home/ngsci/datasets/tb-wellgen-smear/
+    tb_labels_csv: /home/ngsci/datasets/tb-wellgen-smear/v1/tb-labels.csv
+    patch_dir : /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224/
+    patch_size: 224
+    padding_value: 0
+    emb_dir: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224/
+    emb_h5: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224.h5
+    # holdout
+    data_root_dir_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/
+    tb_labels_csv_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/tb-holdout-manifest.csv
+    patch_dir_holdout: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224_holdout/
+    emb_dir_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224_holdout/
+    emb_h5_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224_holdout.h5
+
+
+        
+#########################################################################
+#########################################################################        
+# TRANSFORMER ON 224x224 PATCHES EMB
+transformer_on_embeddings_bag:
+  dinov2-vit-small_224_224_patches:
+    cv_split_dir: /home/ngsci/project/tuberculosis_detection/cv_splits/
+    cv_split_dir_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_10fold/
+    cv_split_dir_without_localtest_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_without_localtest_10fold/
+    data_root_dir: /home/ngsci/datasets/tb-wellgen-smear/
+    tb_labels_csv: /home/ngsci/datasets/tb-wellgen-smear/v1/tb-labels.csv
+    patch_dir: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224/
+    patch_dir_augmented: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224_augmented/
+    patch_size: 224
+    padding_value: 0
+    emb_dir: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224/
+    emb_dir_augmented: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224_augmented/
+    emb_h5: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224.h5
+    emb_h5_augmented: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224_augmented.h5
+    # holdout
+    data_root_dir_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/
+    tb_labels_csv_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/tb-holdout-manifest.csv
+    patch_dir_holdout: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224_holdout/
+    emb_dir_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224_holdout/
+    emb_h5_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-small_224_224_patches/patch_embeddings_dinov2-vit-small_224_holdout.h5 
+    
+  dinov2-vit-large_224_224_patches:
+    cv_split_dir: /home/ngsci/project/tuberculosis_detection/cv_splits/
+    cv_split_dir_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_10fold/
+    cv_split_dir_without_localtest_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_without_localtest_10fold/
+    data_root_dir: /home/ngsci/datasets/tb-wellgen-smear/
+    tb_labels_csv: /home/ngsci/datasets/tb-wellgen-smear/v1/tb-labels.csv
+    patch_dir : /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224/
+    patch_size: 224
+    padding_value: 0
+    emb_dir: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-large_224_224_patches/patch_embeddings_dinov2-vit-large_224/
+    emb_h5: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-large_224_224_patches/patch_embeddings_dinov2-vit-large_224.h5
+    # holdout
+    data_root_dir_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/
+    tb_labels_csv_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/tb-holdout-manifest.csv
+    patch_dir_holdout: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224_holdout/
+    emb_dir_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-large_224_224_patches/patch_embeddings_dinov2-vit-large_224_holdout/
+    emb_h5_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/dinov2-vit-large_224_224_patches/patch_embeddings_dinov2-vit-large_224_holdout.h5 
+
+  uni_224_224_patches:
+    cv_split_dir: /home/ngsci/project/tuberculosis_detection/cv_splits/
+    cv_split_dir_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_10fold/
+    cv_split_dir_without_localtest_10fold: /home/ngsci/project/tuberculosis_detection/cv_splits_without_localtest_10fold/
+    data_root_dir: /home/ngsci/datasets/tb-wellgen-smear/
+    tb_labels_csv: /home/ngsci/datasets/tb-wellgen-smear/v1/tb-labels.csv
+    patch_dir : /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224/
+    patch_size: 224
+    padding_value: 0
+    emb_dir: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224/
+    emb_h5: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224.h5
+    # holdout
+    data_root_dir_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/
+    tb_labels_csv_holdout: /home/ngsci/datasets/tb-wellgen-smear/supplementary/contest/tb-holdout-manifest.csv
+    patch_dir_holdout: /home/ngsci/project/tuberculosis_detection/01_raw_patches/patch_extraction_data_224_holdout/
+    emb_dir_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224_holdout/
+    emb_h5_holdout: /home/ngsci/project/tuberculosis_detection/02_patch_embeddings/uni_224_224_patches/patch_embeddings_uni_224_holdout.h5

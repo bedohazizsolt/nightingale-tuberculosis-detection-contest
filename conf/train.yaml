@@ -1,0 +1,123 @@
+# Copyright 2024 Zsolt Bedőházi, András M. Biricz
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+#########################################################################
+#########################################################################
+# HIPT STAGE3 ON 224x224 PATCHES EMB
+hipt_stage3_on_embeddings_bag:
+  uni_224_224_patches:
+    emb_dim: 1024
+    bag_size: 110
+    lr: 3e-5
+    use_scheduler: False
+    initial_lr: 1e-4
+    eta_min: 1e-5
+    T_0: 200
+    weight_decay: 1e-6
+    minority_class_ratio: 1.0
+    num_epochs: 200
+    n_experiment: 1
+    run_nr: 1
+    results_dir: /home/ngsci/project/tuberculosis_detection/03_training/hipt_stage3_on_embeddings_bag/uni_224_224_patches/runs/run_${.run_nr}/
+    # model params
+    dropout_fc: 0.25
+    dropout_transformer: 0.25
+    dropout_attn: 0.25
+    nhead: 3
+    num_layers: 2
+    
+    
+#########################################################################
+#########################################################################
+# TRANSFORMER ON 224x224 PATCHES EMB
+transformer_on_embeddings_bag:
+  dinov2-vit-small_224_224_patches_cls:
+    emb_dim: 384
+    bag_size: 110
+    lr: 3e-5
+    use_scheduler: False
+    initial_lr: 1e-4
+    eta_min: 3e-5
+    T_0: 200
+    weight_decay: 1e-6
+    minority_class_ratio: 1.0
+    num_epochs: 200  
+    batch_size: 128
+    n_experiment: 1
+    run_nr: 1
+    results_dir: /home/ngsci/project/tuberculosis_detection/03_training/transformer_on_embeddings_bag/dinov2-vit-small_224_224_patches_cls/runs/run_${.run_nr}/
+    dropout: 0.1 
+    dim_feedforward: 4096 
+    num_heads: 3
+    num_encoder_layers: 2
+    num_classes: 2  
+
+  dinov2-vit-large_224_224_patches_cls:
+    emb_dim: 1024
+    bag_size: 110
+    lr: 5e-6
+    use_scheduler: False
+    initial_lr: 1e-4
+    eta_min: 1e-5
+    T_0: 200
+    weight_decay: 1e-6
+    minority_class_ratio: 1.0
+    num_epochs: 200
+    batch_size: 128
+    n_experiment: 1
+    run_nr: 1
+    results_dir: /home/ngsci/project/tuberculosis_detection/03_training/transformer_on_embeddings_bag/dinov2-vit-large_224_224_patches_cls/runs/run_${.run_nr}/
+    dropout: 0.1
+    dim_feedforward: 8192
+    num_heads: 8
+    num_encoder_layers: 2
+    num_classes: 2
+    
+  uni_224_224_patches_cls:
+    emb_dim: 1024
+    bag_size: 110
+    lr: 3e-5
+    use_scheduler: False
+    initial_lr: 1e-4
+    eta_min: 1e-5
+    T_0: 200
+    weight_decay: 1e-6
+    minority_class_ratio: 1.0
+    num_epochs: 200
+    batch_size: 128
+    n_experiment: 1
+    run_nr: 1
+    results_dir: /home/ngsci/project/tuberculosis_detection/03_training/transformer_on_embeddings_bag/uni_224_224_patches_cls/runs/run_${.run_nr}/
+    dropout: 0.1
+    dim_feedforward: 8192
+    num_heads: 8
+    num_encoder_layers: 3
+    num_classes: 2 
+
+  dinov2-vit-large_and_uni_224_224_patches_cls:
+    bag_size: 110
+    lr: 3e-5
+    use_scheduler: False
+    initial_lr: 1e-4
+    eta_min: 1e-5
+    T_0: 200
+    weight_decay: 1e-6
+    minority_class_ratio: 1.0
+    num_epochs: 200
+    batch_size: 128
+    n_experiment: 1
+    run_nr: 1
+    results_dir: /home/ngsci/project/tuberculosis_detection/03_training/transformer_on_embeddings_bag/dinov2-vit-large_and_uni_224_224_patches_cls/runs/run_${.run_nr}/ 
+     
